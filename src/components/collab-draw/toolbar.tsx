@@ -60,8 +60,8 @@ export function Toolbar({
 }: ToolbarProps) {
   return (
     <TooltipProvider>
-      <aside className="flex flex-col items-center gap-4 border-r bg-card p-2">
-        <div className="flex flex-col gap-2">
+      <aside className="flex flex-row items-center justify-start gap-4 overflow-x-auto border-b bg-card p-2 md:flex-col md:justify-start md:overflow-y-auto md:overflow-x-hidden md:border-r md:border-b-0 md:py-4">
+        <div className="flex flex-row gap-2 md:flex-col">
           {tools.map(({ name, icon: Icon }) => (
             <Tooltip key={name}>
               <TooltipTrigger asChild>
@@ -74,15 +74,19 @@ export function Toolbar({
                   <Icon className="h-5 w-5" />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent side="right">
+              <TooltipContent side="bottom" className="block md:hidden">
+                <p className="capitalize">{name}</p>
+              </TooltipContent>
+              <TooltipContent side="right" className="hidden md:block">
                 <p className="capitalize">{name}</p>
               </TooltipContent>
             </Tooltip>
           ))}
         </div>
-        <Separator />
-        <div className="flex flex-col items-center gap-4">
-          <Label htmlFor="color-picker" className="text-xs">Color</Label>
+        <Separator orientation="vertical" className="h-10 md:hidden" />
+        <Separator className="hidden w-full md:block" />
+        <div className="flex flex-row items-center gap-2 md:flex-col md:gap-4">
+          <Label htmlFor="color-picker" className="text-xs shrink-0">Color</Label>
           <Tooltip>
             <TooltipTrigger asChild>
                 <input
@@ -94,12 +98,15 @@ export function Toolbar({
                   style={{ backgroundColor: color }}
                 />
             </TooltipTrigger>
-            <TooltipContent side="right">
+            <TooltipContent side="bottom" className="block md:hidden">
+              <p>Select Color</p>
+            </TooltipContent>
+            <TooltipContent side="right" className="hidden md:block">
               <p>Select Color</p>
             </TooltipContent>
           </Tooltip>
         </div>
-        <div className="flex w-full flex-col gap-4 px-2">
+        <div className="flex w-36 flex-row items-center gap-2 px-2 md:w-full md:flex-col md:gap-4">
           <Label htmlFor="stroke-width" className="text-center text-xs">
             Stroke
           </Label>
@@ -112,15 +119,19 @@ export function Toolbar({
             onValueChange={(values) => setStrokeWidth(values[0])}
           />
         </div>
-        <Separator />
-        <div className="flex flex-col gap-2">
+        <Separator orientation="vertical" className="h-10 md:hidden" />
+        <Separator className="hidden w-full md:block" />
+        <div className="flex flex-row gap-2 md:flex-col">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" onClick={handleUndo} disabled={!canUndo}>
                 <Undo2 className="h-5 w-5" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="right">
+            <TooltipContent side="bottom" className="block md:hidden">
+              <p>Undo</p>
+            </TooltipContent>
+            <TooltipContent side="right" className="hidden md:block">
               <p>Undo</p>
             </TooltipContent>
           </Tooltip>
@@ -130,7 +141,10 @@ export function Toolbar({
                 <Redo2 className="h-5 w-5" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="right">
+            <TooltipContent side="bottom" className="block md:hidden">
+              <p>Redo</p>
+            </TooltipContent>
+            <TooltipContent side="right" className="hidden md:block">
               <p>Redo</p>
             </TooltipContent>
           </Tooltip>
@@ -140,7 +154,10 @@ export function Toolbar({
                 <Trash2 className="h-5 w-5" />
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="right">
+            <TooltipContent side="bottom" className="block md:hidden">
+              <p>Clear Canvas</p>
+            </TooltipContent>
+            <TooltipContent side="right" className="hidden md:block">
               <p>Clear Canvas</p>
             </TooltipContent>
           </Tooltip>

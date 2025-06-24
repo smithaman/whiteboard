@@ -70,7 +70,7 @@ export default function CollabDrawPage() {
   return (
     <div className="flex h-screen w-screen flex-col bg-background">
       <Header />
-      <main className="flex flex-1 overflow-hidden">
+      <main className="flex flex-1 flex-col overflow-hidden md:flex-row">
         <Toolbar
           tool={tool}
           setTool={setTool}

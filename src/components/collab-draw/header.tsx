@@ -17,16 +17,16 @@ export function Header() {
           <div className="rounded-lg bg-primary p-2 text-primary-foreground">
             <PenTool className="h-6 w-6" />
           </div>
-          <h1 className="text-xl font-bold tracking-tight">CollabDraw</h1>
+          <h1 className="text-lg font-bold tracking-tight sm:text-xl">CollabDraw</h1>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={() => setFeedbackOpen(true)}>
-            <Sparkles className="mr-2 h-4 w-4" />
-            Clarify Feedback
+            <Sparkles className="h-4 w-4" />
+            <span className="hidden sm:inline">Clarify Feedback</span>
           </Button>
           <Button onClick={() => setShareOpen(true)}>
-            <Share2 className="mr-2 h-4 w-4" />
-            Share
+            <Share2 className="h-4 w-4" />
+            <span className="hidden sm:inline">Share</span>
           </Button>
         </div>
       </header>
